@@ -21,4 +21,6 @@ const insertDoc = () => {
   }).catch((err) => {
     console.log(err);
   });
+
+  throw 'Some error';
 }
