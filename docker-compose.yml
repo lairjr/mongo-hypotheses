@@ -23,6 +23,15 @@ services:
     image: mongo:3.4.0
     command: mongod --nojournal --replSet "rs0" --smallfiles --oplogSize 128
 
+  oplog1:
+    build: .
+    command: yarn start
+    tty: true
+    volumes:
+      - ./mongo_oplog/:/app/src
+    environment:
+      - OPLOG_URI=mongodb1/local
+
   mongoConfigRs0:
     image: mongo:3.4.0
     volumes:
