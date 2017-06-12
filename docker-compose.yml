@@ -1,0 +1,30 @@
+version: '3'
+services:
+  insert_app:
+    build: .
+    command: yarn start
+    tty: true
+    volumes:
+      - ./insert_app/:/app/src
+
+  mongodb1:
+    image: mongo:3.4.0
+    command: mongod --nojournal --replSet "rs0" --smallfiles --oplogSize 128
+
+  mongodb2:
+    image: mongo:3.4.0
+    command: mongod --nojournal --replSet "rs0" --smallfiles --oplogSize 128
+
+  mongodb3:
+    image: mongo:3.4.0
+    command: mongod --nojournal --replSet "rs0" --smallfiles --oplogSize 128
+
+  mongodb4:
+    image: mongo:3.4.0
+    command: mongod --nojournal --replSet "rs0" --smallfiles --oplogSize 128
+
+  mongoConfigRs0:
+    image: mongo:3.4.0
+    volumes:
+      - ./scripts/:/scripts
+    command: bash -c "chmod +x /scripts/mongodb_rs0_config.sh && ./scripts/mongodb_rs0_config.sh"
