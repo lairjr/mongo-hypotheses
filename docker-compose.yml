@@ -32,6 +32,33 @@ services:
     environment:
       - OPLOG_URI=mongodb1/local
 
+  oplog2:
+    build: .
+    command: yarn start
+    tty: true
+    volumes:
+      - ./mongo_oplog/:/app/src
+    environment:
+      - OPLOG_URI=mongodb2/local
+
+  oplog3:
+    build: .
+    command: yarn start
+    tty: true
+    volumes:
+      - ./mongo_oplog/:/app/src
+    environment:
+      - OPLOG_URI=mongodb3/local
+
+  oplog4:
+    build: .
+    command: yarn start
+    tty: true
+    volumes:
+      - ./mongo_oplog/:/app/src
+    environment:
+      - OPLOG_URI=mongodb4/local
+
   mongoConfigRs0:
     image: mongo:3.4.0
     volumes:
