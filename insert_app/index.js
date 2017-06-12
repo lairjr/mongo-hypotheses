@@ -20,5 +20,5 @@ const insertDoc = () => {
     console.log(`${name} inserted`);
   }).catch((err) => {
     console.log(err);
-  })
+  });
 }
