@@ -13,11 +13,11 @@ We will have confidence to proceed when have promisses resolution working proper
 3. If you want to tail the oplogs you can do: `docker-compose up oplog1 oplog2 oplog3 oplog4`;
 4. Then you can run a sample app by: `docker-compose up insert_app`.
 
-### Experiment
+### Experiment with app dying
 
-In order to prove promise resolution we built an app which insert recurrent kittens by 1 sec interval and we try to kill the primary mongo instance. We should have a delay to resolve promises until mongo selects a new primary instance, but we should keep the inserted data consistence.
+In order to prove promise resolution we built an app which will ask to insert an kitten in the kittens mongo collection and the app will exit right after the request.
 
 ### Results
 
-We were able to conclude that mongoose promise resolution are triggered only if the data it's actually persisted.
-![mongo_sample](https://user-images.githubusercontent.com/9889113/27053916-79decd84-4f95-11e7-98c2-16bd54e61d12.gif)
+We were able to conclude that mongoose promise resolution is not triggered and the data is not persisted.
+![with_app_dying](https://user-images.githubusercontent.com/9889113/27057048-cc4f101e-4fa0-11e7-8267-805389cd3a5e.gif)
